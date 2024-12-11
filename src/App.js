@@ -15,9 +15,9 @@ function Counter() {
   // const [date, setDate] = useState("June 21 2027");
   // console.log(setDate);
 
-  function numAdd() {
-    setNum((a) => a + step);
-  }
+  // function numAdd() {
+  //   setNum((a) => a + step);
+  // }
 
   function numSub() {
     setNum((s) => s - step);
@@ -60,15 +60,27 @@ function Counter() {
       <div>
         <button onClick={numSub}>-</button>
         <div>Count: {num}</div>
-        <button onClick={numAdd}>+</button>
+        <button onClick={() => setNum((a) => a + step)}>+</button>
       </div>
-      {!num ? (
+
+      {/* {!num ? (
         <div>Today is {newDate.toDateString()}</div>
       ) : (
         <div>
           {num} days from today is {newDate.toDateString()}
         </div>
-      )}
+      )} */}
+
+      <p>
+        <span>
+          {num === 0
+            ? "Today is"
+            : num > 0
+            ? `${num} days from today is`
+            : `${Math.abs(num)} days ago was`}
+        </span>
+        <span> {newDate.toDateString()}</span>
+      </p>
     </div>
   );
 }
