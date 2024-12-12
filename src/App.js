@@ -63,7 +63,7 @@ function Counter() {
         <input
           type="text"
           value={num}
-          onChange={(e) => setNum(e.target.value)}
+          onChange={(e) => setNum(Number(e.target.value))}
         ></input>
         <button onClick={() => setNum((a) => a + step)}>+</button>
       </div>
@@ -79,7 +79,7 @@ function Counter() {
         <span> {newDate.toDateString()}</span>
       </p>
 
-      <button onClick={init}>Reset</button>
+      {num !== 0 || step !== 1 ? <button onClick={init}>Reset</button> : null}
     </div>
   );
 }
